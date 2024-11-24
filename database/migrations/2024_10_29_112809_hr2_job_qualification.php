@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hr4_recruitment', function (Blueprint $table) {
-      $table->id('recruitment_id');
-            $table->string('jobrole')->nullable();
-            $table->string('department')->nullable();
+    
+   Schema::create('hr2_job_qualification', function (Blueprint $table) {
+      $table->id('job_id');
+            $table->string('job_request_id')->nullable();
+            $table->string('description')->nullable();
             $table->string('status')->nullable();
-            $table->string('Description')->nullable();
             $table->timestamps();
   //
           });
+
     }
 
     /**

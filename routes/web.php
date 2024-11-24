@@ -206,6 +206,12 @@ Route::post('/Recruiteupdate', [App\Http\Controllers\RecruitmentController::clas
 
 Route::post('/recruitment_update', [App\Http\Controllers\RecruitmentController::class, 'update_request'])->name('update_request');
 
+Route::get('/pages/profile-user', [UserProfile::class, 'index'])->name('pages-profile-user');
+
+Route::post('/storeImage', [UserProfile::class,'storeImage'])->name('storeImage');
+Route::post('/userupdate', [UserProfile::class,'update'])->name('userupdate');
+
+
 
 
 });
@@ -308,7 +314,7 @@ Route::get('/app/user/view/connections', [UserViewConnections::class, 'index'])-
 Route::get('/app/access-permission', [AccessPermission::class, 'index'])->name('app-access-permission');
 
 // pages
-Route::get('/pages/profile-user', [UserProfile::class, 'index'])->name('pages-profile-user');
+
 Route::get('/pages/profile-teams', [UserTeams::class, 'index'])->name('pages-profile-teams');
 Route::get('/pages/profile-projects', [UserProjects::class, 'index'])->name('pages-profile-projects');
 Route::get('/pages/profile-connections', [UserConnections::class, 'index'])->name('pages-profile-connections');

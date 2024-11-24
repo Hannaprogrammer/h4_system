@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class EmployeeprofileController extends Controller
 {
  
        public function index(){
-       return view('content.corehuman.Employeeprofile-view');
+
+                $applicants= DB::select("select  * FROM  hr1_applicant  "); 
+       return view('content.corehuman.Employeeprofile-view',['applicants' =>$applicants]);
    }
 }

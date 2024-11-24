@@ -1,6 +1,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
 @extends('layouts/layoutMaster')
 @section('title', 'Payroll')
@@ -43,6 +44,8 @@
         <tr>
          <th>JOB ROLES NEEDED</th>
          <th>DEPARTMENT</th>
+         <td>SALARY</td>
+         <td>SCHEDULE</td>
          <th>STATUS</th>
          <th>DATE REQUEST</th>
          <th>ACTION</th>
@@ -54,6 +57,8 @@
        <td style="display:none;">{{ $row->recruitment_id }}</td>
        <td class="titles">{{ $row->jobrole }}</td>
        <td>{{ $row->department}}</td>
+        <td>{{ $row->salary}}</td>
+         <td>{{ $row->time}}</td>
        <td><span class="badge bg-danger">{{ $row->status}}</span></td>
        <td>{{ $row->created_at}}</td>
        <td style="display:flex;">
@@ -97,7 +102,14 @@
               <option>Logistic Department</option>
             </select>
           </div>
-          <input type="text"  value="pending" style="display:none;" name="status">
+            <div class="form-group">
+            <label>Salary</label>
+            <input  type="number" class="form-control" name="salary">
+          </div>
+               <div class="form-group">
+            <label>Salary</label>
+            <input  type="text" class="form-control" name="time">
+          </div>
           <div class="modal-footer">
             <button type="SUBMIT" class="btn btn-primary">Save changes</button>
             <button type="button" class="btn btn-danger" id="modal_close">Close</button>
@@ -128,6 +140,15 @@
               <option>Logistic Department</option>
                           </select>
           </div>
+            <div class="form-group">
+            <label>Salary</label>
+            <input  type="text" class="form-control" name="salary_update" id="salary_update">
+          </div>
+             <div class="form-group">
+            <label>Time</label>
+            <input  type="text" class="form-control" name="time_update" id="time_update">
+          </div>
+
           <input type="text"  value="pending" style="display:none;" name="status">
           <div class="modal-footer">
             <button type="SUBMIT" class="btn btn-primary">Save changes</button>
@@ -141,25 +162,28 @@
   </div>
 
 
-
   @endsection
 
 
-    <script >
-  $(document).on('click','#update_recruitment', function () {
-    $('#updating_recruitment').modal('show');
-    $('form')[0].reset();
-    var tr = $(this).closest("tr").find('td');
-    $('#employee_id').val(tr.eq(1).text());
-var  f=tr.eq(2).text();
-        $('#department_update').val(f.trim()).change();
-    $('#jobrole_update').val(tr.eq(1).text());
-      $('#recruitment_id_update').val(tr.eq(0).text());
-  });
+    <script>
 
-     $(document).on('click', '#close_update', function () {
-      $('#updating_recruitment').modal('hide');
-    });
+$(document).on('click','#update_recruitment', function () {
+      $('#updating_recruitment').modal('show');
+      $('form')[0].reset();
+      var tr = $(this).closest("tr").find('td');
+      $('#employee_id').val(tr.eq(1).text());
+      var f=tr.eq(2).text();
+      $('#department_update').val(f.trim()).change();
+      $('#jobrole_update').val(tr.eq(1).text());
+          $('#salary_update').val(tr.eq(3).text());
+              $('#time_update').val(tr.eq(4).text());
+      $('#recruitment_id_update').val(tr.eq(0).text());
+  })
+     $(document).on('click', '#close_update',function()
+   {
+$('#updating_recruitment').modal('hide');
+   });
+
   </script>
 
   <script >
@@ -181,4 +205,6 @@ var  f=tr.eq(2).text();
         $('.contents .titles:contains("'+text+'")').closest('.contents').show();
       });
     });
+
+
   </script>

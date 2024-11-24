@@ -41,71 +41,66 @@
 
 @section('content')
 
-
 <div class="">
-  <div class="card">
-    <div style="display:flex;">
-      <form class=" mt-3 ml-3 mw-100 navbar-search"  style="margin-left:7px" autocomplete="off">
-        <div class="input-group">
-          <input type="text"  id="myInput" onkeyup="myFunction()" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" >
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button" style="height:40px;">
-              <i class="fas fa-search fa-sm"></i>
-            </button>
-          </div>
+    <div class="card">
+        <div style="display:flex;">
+            <form class="mt-3 ml-3 mw-100 navbar-search" style="margin-left:7px" autocomplete="off">
+                <div class="input-group">
+                    <input type="text" id="myInput" onkeyup="myFunction()" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" style="height:40px;">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-      </form>
+        <div class="card-datatable table-responsive">
+            <table class="datatables-projects table border-top">
+                <thead>
+                    <tr>
+                        <th>EMPLOYEE ID</th>
+                        <th>EMPLOYEE NAME</th>
+                        <th>GENDER</th>
+                        <th>JOB POSITION</th>
+                        <th>DEPARTMENT</th>
+                        <th>EMPLOYMENT TYPE</th>
+                        <th>DATE OF HIRE</th>
+                        <th>STATUS</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($applicants as $applicant)
+                    <tr>
+                        <td>{{ $applicant->applicant_id }}</td>
+                        <td>{{ $applicant->firstname }} {{ $applicant->lastname }}</td>
+                        <td>{{ $applicant->gender }}</td>
+                        <td>{{ $applicant->job_position }}</td>
+                        <td>{{ $applicant->department }}</td>
+                        <td>{{ $applicant->civil_status }}</td>
+                        <td>{{ $applicant->created_at }}</td>
+                        <td>{{ $applicant->status }}</td>
+                        <td>
+                            <!-- Add action buttons or links here -->
+                            <button class="btn btn-primary">View</button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="card-datatable table-responsive">
-      <table class="datatables-projects table border-top">
-        <thead>
-          <tr>
-           <th>EMPLOYEE ID</th>
-           <th>EMPLOYEE NAME</th>
-           <th>GENDER</th>
-           <th>JOBPOSITION</th>
-           <th>DEPARTMENT</th>
-           <th>EMPLOYEMENT TYPE</th>
-           <th>DATE OF HIRE</th>
-           <th>STATUS</th>
-           <th>ACTION</th>
-         </tr>
-       </thead>
-       <tbody>
-      </tbody>
-
-    </table>
-  </div>
 </div>
-</div>
-
-
-
-
-
-
-
-
-
 
 <script type="text/javascript">
-
-
-
-  $('#myInput').keyup(function(){
-// Search text
-    var text = $(this).val();
-// Hide all content class element
-    $('.contents').hide();
-
-// Search 
-    $('.contents .titles:contains("'+text+'")').closest('.contents').show();
-  });
-
+    $('#myInput').keyup(function() {
+        // Search text
+        var text = $(this).val();
+        // Hide all content class element
+        $('.contents').hide();
+        // Search 
+        $('.contents .titles:contains("' + text + '")').closest('.contents').show();
+    });
 </script>
-
-
-
 @endsection
-
-
