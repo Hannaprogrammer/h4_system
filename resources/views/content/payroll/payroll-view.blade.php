@@ -51,9 +51,9 @@
      <tbody>
       <?php           
            $host="localhost"; // Host name 
-           $username="root"; // Mysql username 
-           $password=""; // Mysql password 
-           $db_name="database_01"; // Database name 
+           $username="hr4_user"; // Mysql username 
+           $password="gFJqsw6m8ngpo*oP"; // Mysql password 
+           $db_name="hr4_database"; // Database name 
            $tbl_name="information"; // Table name 
            $conn = mysqli_connect("$host","$username","$password")or die("cannot connect"); 
            mysqli_select_db($conn,"$db_name")or die("cannot select DB");
