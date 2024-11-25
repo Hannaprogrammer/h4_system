@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('jobrole')->nullable();
             $table->string('department')->nullable();
             $table->string('status')->nullable();
+            $table->string('salary')->nullable();
+            $table->string('time')->nullable();
             $table->string('Description')->nullable();
             $table->timestamps();
   //

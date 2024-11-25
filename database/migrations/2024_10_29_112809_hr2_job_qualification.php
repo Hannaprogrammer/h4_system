@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        
-         Schema::create('hr4_deduction', function (Blueprint $table) {
-      $table->id('deduction_id');
-            $table->string('employee_id')->nullable();
-            $table->string('pagibig')->nullable();
-            $table->string('sss')->nullable();
-            $table->string('philhealth')->nullable();
+    
+   Schema::create('hr2_job_qualification', function (Blueprint $table) {
+      $table->id('job_id');
+            $table->string('job_request_id')->nullable();
+            $table->string('description')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
   //
           });
+
     }
 
     /**

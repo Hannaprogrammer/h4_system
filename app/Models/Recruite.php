@@ -15,6 +15,8 @@ class Recruite extends Model
         'jobrole',
         'department',
         'status',
+          'salary',
+            'time',
         'description',
         
     ];
